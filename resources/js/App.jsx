@@ -10,6 +10,8 @@ import Dashboard from './pages/Dashboard';
 import Vault from './pages/Vault';
 import Folders from './pages/Folders';
 import Generator from './pages/Generator';
+import Import from './pages/Import';
+import Export from './pages/Export';
 
 export default function App() {
     return (
@@ -28,6 +30,8 @@ export default function App() {
                                 <Route path="folders" element={<Folders />} />
                                 <Route path="generator" element={<Generator />} />
                                 <Route path="tools" element={<Navigate to="/generator" replace />} />
+                                <Route path="import" element={<Import />} />
+                                <Route path="export" element={<Export />} />
                             </Route>
                         </Route>
                         <Route path="/home" element={<Navigate to="/" replace />} />
