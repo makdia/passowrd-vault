@@ -297,3 +297,16 @@ body {
     font-size: 32px;
     color: var(--pv-brand);
 }
+
+/* Generator */
+.pv-generated {
+    padding: 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    background: var(--pv-brand-soft);
+    word-break: break-all;
+}
+
+.pv-generated-text {
+    font-size: 22px;
+}

@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Vault from './pages/Vault';
 import Folders from './pages/Folders';
+import Generator from './pages/Generator';
 
 export default function App() {
     return (
@@ -25,6 +26,8 @@ export default function App() {
                                 <Route index element={<Dashboard />} />
                                 <Route path="vault" element={<Vault />} />
                                 <Route path="folders" element={<Folders />} />
+                                <Route path="generator" element={<Generator />} />
+                                <Route path="tools" element={<Navigate to="/generator" replace />} />
                             </Route>
                         </Route>
                         <Route path="/home" element={<Navigate to="/" replace />} />
