@@ -35,3 +35,15 @@ export function downloadBlob(blob, filename) {
     link.remove();
     setTimeout(() => URL.revokeObjectURL(link.href), 1000);
 }
+
+// Only http(s) becomes a link; anything else (javascript:, data:) stays plain text.
+export function safeHref(url) {
+    if (!url) return null;
+    const candidate = /^[a-z][a-z0-9+.-]*:\/\//i.test(url) ? url : `https://${url}`;
+    try {
+        const parsed = new URL(candidate);
+        return parsed.protocol === 'http:' || parsed.protocol === 'https:' ? parsed.href : null;
+    } catch {
+        return null;
+    }
+}

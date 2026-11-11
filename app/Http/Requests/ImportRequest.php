@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Models\Category;
 use App\Services\VaultTransfer;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\WebUrl;
 use Illuminate\Validation\Rule;
 
 class ImportRequest extends FormRequest
@@ -22,7 +23,7 @@ class ImportRequest extends FormRequest
             'rows.*.folder_name' => ['nullable', 'string', 'max:255'],
             'rows.*.username' => ['nullable', 'string', 'max:255'],
             'rows.*.password' => ['nullable', 'string', 'max:1000'],
-            'rows.*.url' => ['nullable', 'string', 'max:255'],
+            'rows.*.url' => ['nullable', 'string', 'max:255', new WebUrl()],
             'rows.*.notes' => ['nullable', 'string', 'max:10000'],
         ];
     }

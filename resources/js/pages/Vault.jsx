@@ -11,7 +11,7 @@ import ItemFormModal from '../components/vault/ItemFormModal';
 import useRequest from '../api/useRequest';
 import { categoriesApi, foldersApi, itemsApi } from '../api';
 import { errorMessage } from '../api/client';
-import { hostOf, timeAgo } from '../lib/format';
+import { hostOf, safeHref, timeAgo } from '../lib/format';
 
 const PAGE_SIZE = 20;
 const CATEGORY_COLORS = { Login: 'blue', 'Secure Note': 'gold', Card: 'green', Identity: 'purple' };
@@ -77,11 +77,11 @@ export default function Vault() {
                     <ItemAvatar name={name} />
                     <div className="pv-item-name-text">
                         <Typography.Text strong>{name}</Typography.Text>
-                        {item.url && (
-                            <a href={item.url.includes('://') ? item.url : `https://${item.url}`} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                        {item.url && (safeHref(item.url) ? (
+                            <a href={safeHref(item.url)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                                 {hostOf(item.url)}
                             </a>
-                        )}
+                        ) : <Typography.Text type="secondary">{item.url}</Typography.Text>)}
                     </div>
                 </div>
             ),
