@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\FolderController;
 use App\Http\Controllers\Api\ItemController;
+use App\Http\Controllers\Api\VaultTransferController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
@@ -20,4 +21,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('categories', [CategoryController::class, 'index']);
     Route::apiResource('folders', FolderController::class)->except('show');
     Route::apiResource('items', ItemController::class);
+    Route::get('vault/export', [VaultTransferController::class, 'export']);
+    Route::post('vault/import', [VaultTransferController::class, 'import']);
 });
