@@ -26,4 +26,4 @@ Route::post('count', function (Request $request) {
 
 Route::get('{any}', function () {
     return view('welcome');
-})->where('any', '.*');
+})->where('any', '^(?!api(/|$)).*');

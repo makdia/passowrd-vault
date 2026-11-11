@@ -21,8 +21,8 @@ Route::prefix('auth')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('dashboard', DashboardController::class);
     Route::get('categories', [CategoryController::class, 'index']);
-    Route::apiResource('folders', FolderController::class)->except('show');
-    Route::apiResource('items', ItemController::class);
+    Route::apiResource('folders', FolderController::class)->except('show')->where(['folder' => '[0-9]+']);
+    Route::apiResource('items', ItemController::class)->where(['item' => '[0-9]+']);
     Route::get('vault/export', [VaultTransferController::class, 'export']);
     Route::post('vault/import', [VaultTransferController::class, 'import']);
 });
