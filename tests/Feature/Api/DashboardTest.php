@@ -40,6 +40,16 @@ class DashboardTest extends TestCase
         $this->assertArrayNotHasKey('password', $data['recent'][0]);
     }
 
+    public function test_dashboard_lists_only_active_categories(): void
+    {
+        Sanctum::actingAs(User::factory()->create());
+        \App\Models\Category::where('name', 'Identity')->update(['status' => 0]);
+
+        $names = array_column($this->getJson('/api/dashboard')->json('data.categories'), 'name');
+
+        $this->assertSame(['Login', 'Secure Note', 'Card'], $names);
+    }
+
     public function test_weak_rule(): void
     {
         $health = new PasswordHealth();

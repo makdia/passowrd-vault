@@ -18,7 +18,7 @@ class DashboardController extends Controller
         $countsByCategory = $user->items()->selectRaw('category_id, count(*) as total')
             ->groupBy('category_id')->pluck('total', 'category_id');
 
-        $categories = Category::orderBy('id')->get(['id', 'name'])->map(fn ($category) => [
+        $categories = Category::where('status', 1)->orderBy('id')->get(['id', 'name'])->map(fn ($category) => [
             'id' => $category->id,
             'name' => $category->name,
             'count' => (int) ($countsByCategory[$category->id] ?? 0),
