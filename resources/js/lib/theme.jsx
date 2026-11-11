@@ -30,6 +30,10 @@ export function ThemeProvider({ children }) {
         algorithm: mode === 'dark' ? antTheme.darkAlgorithm : antTheme.defaultAlgorithm,
         token: {
             colorPrimary: '#4f46e5',
+            colorLink: mode === 'dark' ? '#a5b4fc' : '#4f46e5',
+            colorBgLayout: mode === 'dark' ? '#0f1120' : '#f5f6fb',
+            colorBgContainer: mode === 'dark' ? '#161a2e' : '#ffffff',
+            colorBgElevated: mode === 'dark' ? '#1c2138' : '#ffffff',
             borderRadius: 10,
             fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
         },

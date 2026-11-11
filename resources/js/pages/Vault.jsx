@@ -176,6 +176,7 @@ export default function Vault() {
                     <Table
                         rowKey="id"
                         columns={columns}
+                        scroll={{ x: 'max-content' }}
                         dataSource={items.data?.data || []}
                         loading={items.loading}
                         onRow={(item) => ({ onClick: () => updateParams({ edit: item.id }, { resetPage: false }) })}

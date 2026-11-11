@@ -220,6 +220,7 @@ body {
 .pv-mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     letter-spacing: 0.02em;
+    white-space: nowrap;
 }
 
 .pv-muted {
@@ -309,6 +310,7 @@ body {
 
 .pv-generated-text {
     font-size: 22px;
+    white-space: normal;
 }
 
 .pv-page-loading {
