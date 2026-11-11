@@ -10,8 +10,4 @@ export default defineConfig({
         }),
         react(),
     ],
-    // serviceWorker.js still reads CRA-style env vars.
-    define: {
-        'process.env.PUBLIC_URL': JSON.stringify(''),
-    },
 });
