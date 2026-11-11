@@ -18,10 +18,15 @@ class Item extends Model
         'password',
         'url',
         'notes',
-        'user_id',
-        'status',
-        'created_at',
-        'updated_at'
+    ];
+
+    protected $attributes = ['status' => 1];
+
+    protected $casts = [
+        'password' => 'encrypted',
+        'notes' => 'encrypted',
+        'category_id' => 'integer',
+        'folder_id' => 'integer',
     ];
 
     public function user(): BelongsTo
