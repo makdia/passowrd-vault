@@ -1,0 +1,1 @@
+function e(e,t){return{role:`link`,tabIndex:0,"aria-label":t,onClick:e,onKeyDown:t=>{t.target===t.currentTarget&&(t.key===`Enter`||t.key===` `)&&(t.preventDefault(),e())}}}export{e as t};
