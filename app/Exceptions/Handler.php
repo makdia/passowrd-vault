@@ -34,6 +34,8 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
+        $this->shouldRenderJsonWhen(fn ($request) => $request->is('api/*') || $request->expectsJson());
+
         $this->reportable(function (Throwable $e) {
             //
         });
