@@ -6,6 +6,7 @@ import { ThemeProvider } from './lib/theme';
 import AppLayout from './components/AppLayout';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Dashboard from './pages/Dashboard';
 
 export default function App() {
     return (
@@ -19,7 +20,7 @@ export default function App() {
                         </Route>
                         <Route element={<RequireAuth />}>
                             <Route element={<AppLayout />}>
-                                <Route index element={null} />
+                                <Route index element={<Dashboard />} />
                             </Route>
                         </Route>
                         <Route path="/home" element={<Navigate to="/" replace />} />
