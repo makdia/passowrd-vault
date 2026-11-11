@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\FolderController;
 use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\VaultTransferController;
@@ -18,6 +19,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('dashboard', DashboardController::class);
     Route::get('categories', [CategoryController::class, 'index']);
     Route::apiResource('folders', FolderController::class)->except('show');
     Route::apiResource('items', ItemController::class);
