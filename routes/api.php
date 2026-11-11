@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\FolderController;
+use App\Http\Controllers\Api\FolderController;
 use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,11 +15,11 @@ Route::prefix('auth')->group(function () {
     });
 });
 
-Route::post("add-folder", [FolderController::class, 'create']);
-Route::get("fetch-folder/{id}", [FolderController::class, 'index']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('folders', FolderController::class)->except('show');
+});
+
 Route::get("fetch-single-folder/{id}", [ItemController::class, 'itemsByFolderId']);
-Route::delete("delete-folder/{id}", [FolderController::class, 'delete']);
-Route::post("edit-folder", [FolderController::class, 'edit']);
 Route::post("add-vault", [ItemController::class, 'create']);
 Route::get("fetch-vault/{id}", [ItemController::class, 'index']);
 Route::get("fetch-single-vault/{id}/{userId}", [ItemController::class, 'show']);
