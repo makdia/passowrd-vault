@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\FolderController;
-use App\Http\Controllers\ItemController;
+use App\Http\Controllers\Api\ItemController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
@@ -16,14 +17,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('categories', [CategoryController::class, 'index']);
     Route::apiResource('folders', FolderController::class)->except('show');
+    Route::apiResource('items', ItemController::class);
 });
-
-Route::get("fetch-single-folder/{id}", [ItemController::class, 'itemsByFolderId']);
-Route::post("add-vault", [ItemController::class, 'create']);
-Route::get("fetch-vault/{id}", [ItemController::class, 'index']);
-Route::get("fetch-single-vault/{id}/{userId}", [ItemController::class, 'show']);
-Route::delete("delete-vault/{id}", [ItemController::class, 'delete']);
-Route::post("edit-vault", [ItemController::class, 'edit']);
-Route::get("export-vault/{id}", [ItemController::class, 'export']);
-Route::post("import-vault", [ItemController::class, 'import']);
