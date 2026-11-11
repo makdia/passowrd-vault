@@ -29,6 +29,6 @@ class Folders extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('folders');
     }
 }

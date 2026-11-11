@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Icon, Tooltip } from 'antd';
+import { Layout, Tooltip } from 'antd';
 import { BrowserRouter as Router,  Link } from 'react-router-dom';
 import SignOut from '../SignOut';
 import {Navigate} from 'react-router-dom';

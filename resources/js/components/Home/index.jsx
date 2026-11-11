@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import { Layout } from 'antd';
-import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Sidebar from '../Navigation/Sidebar';
 import Header from '../Navigation/Header';
 import { Link } from 'react-router-dom';

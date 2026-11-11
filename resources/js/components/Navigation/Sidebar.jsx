@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Icon } from 'antd';
-import { BrowserRouter as Router,  Link, Redirect } from 'react-router-dom';
+import { Layout, Menu } from 'antd';
+import { BrowserRouter as Router,  Link } from 'react-router-dom';
 import '../../assets/css/App.css';
 import Logo from '../../assets/images/logo.png';
 import {

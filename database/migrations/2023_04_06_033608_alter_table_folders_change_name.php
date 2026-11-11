@@ -13,6 +13,11 @@ class AlterTableFoldersChangeName extends Migration
      */
     public function up()
     {
+        // Dated before the folders create migration, so skip on fresh installs.
+        if (! Schema::hasTable('folders')) {
+            return;
+        }
+
         Schema::table('folders', function (Blueprint $table) {
             $table->string('name')->change();
         });
@@ -25,8 +30,6 @@ class AlterTableFoldersChangeName extends Migration
      */
     public function down()
     {
-        Schema::table('folders', function (Blueprint $table) {
-            $table->string('name')->unique(false)->change();
-        });
+        // up() changes nothing, and folders.name never had a unique index.
     }
 }

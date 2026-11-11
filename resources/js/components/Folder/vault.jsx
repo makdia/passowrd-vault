@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col } from 'antd';
 import { Layout } from 'antd';
-import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import Sidebar from '../Navigation/Sidebar';
 import Header from '../Navigation/Header';
@@ -12,7 +12,6 @@ import { FileOutlined, EditOutlined, PlusCircleOutlined, DeleteOutlined } from '
 import Config from '../../constants/config';
 import { UserOutlined, LockOutlined, DribbbleOutlined, GatewayOutlined } from '@ant-design/icons';
 import Select from 'react-select';
-import { withRouter } from "react-router";
 
 function withParams(Component) {
   return props => <Component {...props} params={useParams()} />;
