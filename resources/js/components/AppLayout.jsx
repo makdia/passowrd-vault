@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Avatar, Button, Dropdown, Grid, Layout, Menu, Space, Tooltip, Typography } from 'antd';
+import React, { Suspense, useEffect, useState } from 'react';
+import { Avatar, Button, Dropdown, Grid, Layout, Menu, Space, Spin, Tooltip, Typography } from 'antd';
 import {
     DashboardOutlined,
     ExportOutlined,
@@ -100,7 +100,9 @@ export default function AppLayout() {
                 </Layout.Header>
                 <Layout.Content className="pv-content">
                     <div className="pv-container">
-                        <Outlet />
+                        <Suspense fallback={<div className="pv-page-loading" role="status" aria-label="Loading"><Spin /></div>}>
+                            <Outlet />
+                        </Suspense>
                     </div>
                 </Layout.Content>
             </Layout>

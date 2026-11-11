@@ -310,3 +310,9 @@ body {
 .pv-generated-text {
     font-size: 22px;
 }
+
+.pv-page-loading {
+    display: grid;
+    place-items: center;
+    min-height: 40vh;
+}
