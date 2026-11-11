@@ -225,3 +225,63 @@ body {
 .pv-muted {
     color: var(--pv-text-muted);
 }
+
+.pv-password-field {
+    display: flex;
+    gap: 8px;
+}
+
+.pv-password-field .ant-input-affix-wrapper {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Vault */
+.pv-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+    .pv-toolbar {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pv-item-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.pv-item-name-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.pv-item-name-text > * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pv-table-card .ant-card-body {
+    padding: 0;
+}
+
+.pv-table-card .ant-table-row {
+    cursor: pointer;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}

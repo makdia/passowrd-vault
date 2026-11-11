@@ -7,6 +7,7 @@ import AppLayout from './components/AppLayout';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
+import Vault from './pages/Vault';
 
 export default function App() {
     return (
@@ -21,6 +22,7 @@ export default function App() {
                         <Route element={<RequireAuth />}>
                             <Route element={<AppLayout />}>
                                 <Route index element={<Dashboard />} />
+                                <Route path="vault" element={<Vault />} />
                             </Route>
                         </Route>
                         <Route path="/home" element={<Navigate to="/" replace />} />
