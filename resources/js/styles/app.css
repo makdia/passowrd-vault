@@ -285,3 +285,15 @@ body {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
 }
+
+/* Folders */
+.pv-folder-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.pv-folder-icon {
+    font-size: 32px;
+    color: var(--pv-brand);
+}
