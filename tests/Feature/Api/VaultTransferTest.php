@@ -94,4 +94,24 @@ class VaultTransferTest extends TestCase
         $this->assertSame('pw,with "quotes"', $copies[1]->password);
         $this->assertSame("two\nlines", $copies[1]->notes);
     }
+
+    public function test_import_keeps_whitespace_in_passwords_and_notes(): void
+    {
+        $this->postJson('/api/vault/import', ['rows' => [
+            ['name' => '  Spaced  ', 'password' => ' hunter2 ', 'notes' => "line\n"],
+        ]])->assertCreated();
+
+        $item = Item::first();
+        $this->assertSame('Spaced', $item->name);
+        $this->assertSame(' hunter2 ', $item->password);
+        $this->assertSame("line\n", $item->notes);
+    }
+
+    public function test_item_password_and_notes_keep_whitespace(): void
+    {
+        $this->postJson('/api/items', ['name' => 'x', 'password' => ' pad ', 'notes' => " note "])->assertCreated();
+
+        $this->assertSame(' pad ', Item::first()->password);
+        $this->assertSame(' note ', Item::first()->notes);
+    }
 }

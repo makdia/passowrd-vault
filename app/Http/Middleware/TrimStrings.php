@@ -15,5 +15,9 @@ class TrimStrings extends Middleware
         'current_password',
         'password',
         'password_confirmation',
+        // Vault secrets are stored exactly as typed.
+        'notes',
+        'rows.*.password',
+        'rows.*.notes',
     ];
 }

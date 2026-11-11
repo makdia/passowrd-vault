@@ -9,10 +9,14 @@ import { errorMessage } from '../api/client';
 
 const MAX_ROWS = 1000;
 const COLUMNS = ['name', 'type_id', 'folder_name', 'username', 'password', 'url', 'notes'];
+const KEEP_WHITESPACE = new Set(['password', 'notes']);
 
 function toRows(records) {
     return records.map((record) => {
-        const normalized = Object.fromEntries(Object.entries(record).map(([key, value]) => [key.trim().toLowerCase(), typeof value === 'string' ? value.trim() : value]));
+        const normalized = Object.fromEntries(Object.entries(record).map(([key, value]) => {
+            const column = key.trim().toLowerCase();
+            return [column, typeof value === 'string' && !KEEP_WHITESPACE.has(column) ? value.trim() : value];
+        }));
         return Object.fromEntries(COLUMNS.map((column) => [column, normalized[column] ?? '']));
     });
 }
