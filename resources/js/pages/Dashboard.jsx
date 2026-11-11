@@ -9,6 +9,7 @@ import useRequest from '../api/useRequest';
 import { dashboardApi } from '../api';
 import { useAuth } from '../auth/AuthContext';
 import { hostOf, timeAgo } from '../lib/format';
+import { activatable } from '../lib/a11y';
 
 function scoreColor(score) {
     if (score >= 80) return '#16a34a';
@@ -116,7 +117,7 @@ export default function Dashboard() {
                                     size="small"
                                     dataSource={data.recent}
                                     renderItem={(item) => (
-                                        <List.Item onClick={() => navigate(`/vault?edit=${item.id}`)} style={{ cursor: 'pointer' }}>
+                                        <List.Item {...activatable(() => navigate(`/vault?edit=${item.id}`), `Open ${item.name}`)} style={{ cursor: 'pointer' }}>
                                             <List.Item.Meta
                                                 avatar={<ItemAvatar name={item.name} size={32} />}
                                                 title={item.name}

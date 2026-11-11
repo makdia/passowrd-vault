@@ -318,3 +318,8 @@ body {
     place-items: center;
     min-height: 40vh;
 }
+
+[role='link'][tabindex]:focus-visible {
+    outline: 2px solid var(--pv-brand);
+    outline-offset: 2px;
+}

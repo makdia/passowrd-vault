@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { App, Button, Card, Empty, Input, Popconfirm, Select, Space, Table, Tag, Tooltip, Typography } from 'antd';
 import { DeleteOutlined, EditOutlined, FolderOutlined, PlusOutlined } from '@ant-design/icons';
 import { useSearchParams } from 'react-router-dom';
@@ -20,6 +20,10 @@ export default function Vault() {
     const { message } = App.useApp();
     const [params, setParams] = useSearchParams();
     const [searchDraft, setSearchDraft] = useState(params.get('q') || '');
+    const urlSearch = params.get('q') || '';
+
+    // Keep the box in step with the URL (Back button, sidebar link).
+    useEffect(() => setSearchDraft(urlSearch), [urlSearch]);
 
     const query = {
         search: params.get('q') || undefined,
@@ -34,7 +38,8 @@ export default function Vault() {
     const folders = useRequest(foldersApi.list);
     const categories = useRequest(categoriesApi.list);
 
-    const editing = params.get('edit');
+    const editParam = params.get('edit') || '';
+    const editing = /^\d+$/.test(editParam) ? Number(editParam) : null;
     const creating = params.get('new') === '1';
 
     // Filters always restart from page 1.
@@ -201,8 +206,8 @@ export default function Vault() {
             )}
 
             <ItemFormModal
-                open={creating || Boolean(editing)}
-                itemId={editing ? Number(editing) : null}
+                open={creating || editing !== null}
+                itemId={editing}
                 defaults={{
                     folder_id: query.folder_id && query.folder_id !== 'none' ? Number(query.folder_id) : null,
                     ...(query.category_id ? { category_id: Number(query.category_id) } : {}),

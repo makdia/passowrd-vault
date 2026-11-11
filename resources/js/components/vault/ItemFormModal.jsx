@@ -84,7 +84,7 @@ export default function ItemFormModal({ open, itemId, defaults, folders, categor
                             </Form.Item>
                         </Col>
                         <Col xs={24} sm={12}>
-                            <Form.Item label="Password" extra={<StrengthMeter password={password} />}>
+                            <Form.Item label="Password" htmlFor="password" extra={<StrengthMeter password={password} />}>
                                 <div className="pv-password-field">
                                     <Form.Item name="password" noStyle>
                                         <Input.Password prefix={<LockOutlined />} autoComplete="new-password" className="pv-mono" />

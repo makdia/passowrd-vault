@@ -7,6 +7,7 @@ import LoadError from '../components/ui/LoadError';
 import useRequest from '../api/useRequest';
 import { foldersApi } from '../api';
 import { errorMessage, fieldErrors } from '../api/client';
+import { activatable } from '../lib/a11y';
 
 function FolderNameModal({ folder, open, onClose, onSaved }) {
     const { message } = App.useApp();
@@ -85,7 +86,7 @@ export default function Folders() {
             <Row gutter={[16, 16]}>
                 {data.map((folder) => (
                     <Col key={folder.id} xs={24} sm={12} lg={8} xl={6}>
-                        <Card hoverable className="pv-folder-card" onClick={() => navigate(`/vault?folder=${folder.id}`)}>
+                        <Card hoverable className="pv-folder-card" {...activatable(() => navigate(`/vault?folder=${folder.id}`), `Open folder ${folder.name}`)}>
                             <div className="pv-folder-card-top">
                                 <FolderFilled className="pv-folder-icon" />
                                 <Dropdown
